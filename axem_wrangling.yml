@@ -1,0 +1,96 @@
+input:
+  axem:
+    io: "data/input/axem_2018.xlsx"
+    sheet_name: ["M-AFC", "M-CAF", "M-CONCACAF", "M-CONMEBOL", "M-OFC", "M-UEFA"]
+    names: ["delete", "division", "equipo", "nombre", "nacimiento", "puesto", "trayectoria"]
+  paises:
+    filepath_or_buffer: "data/input/country-codes.csv"
+    delimiter: ","
+    encoding: "utf-8"
+    usecols: ["official_name_es", "ISO3166-1-Alpha-2", "ISO3166-1-Alpha-3", "Region Name"]
+
+
+output:
+  axem:
+    path_or_buf : "data/output/axem_2018_processed.csv"
+    sep: ";"
+    encoding: "utf-8"
+    columns: ["confederacion", "pais", "pais_iso_3", "categoria", "liga", "equipo", "nombre", "ciudad_nacimiento",
+              "fecha_nacimiento", "puesto", "trayectoria"]
+    index: True
+    date_format: "%d/%m/%Y"
+  trayectorias:
+    path_or_buf: "data/output/trayectorias.csv"
+    sep: ";"
+    encoding: "utf-8"
+    columns: ["id_jugador", "nombre", "orden", "equipo", "pais_iso_3"]
+    index: False
+
+
+pais_exceptions: ["J°", "R°", "BK 46", "PAOK", "PSV", "VV HBOK", "AIK", "APOEL", "FAS"]
+
+name_exceptions:
+  AUSTRALIA: "AUS"
+  BELGICA: "BEL"
+  CHIPRE: "CYP"
+  COREA: "KOR"
+  EE.UU.: "USA"
+  ESLOVENIA: "SVN"
+  GUADALUPE: "GLP"
+  GUATEMALA: "GTM"
+  INDONESIA: "IDN"
+  INGLATERRA: "GBR"
+  ISRAEL: "ISR"
+  KAZAJISTAN: "KAZ"
+  MACEDONIA DEL NORTE: "MKD"
+  MOLDAVIA: "MDA"
+  MONTENEGRO: "MNE"
+  NUEVA ZELANDA: "NZL"
+  REPUBLICA CHECA: "CZE"
+  RUSIA: "RUS"
+  SAN MARINO: "SMR"
+  TURQUIA: "TUR"
+
+code_exceptions:
+  AN: "AND"
+  AZB: "AZE"
+  B&H: "BIH"
+  CHP: "CYP"
+  CHQ: "CZE"
+  COOK: "COK"
+  COR: "KOR"
+  CRC: "CRI"
+  CRIC: "CRI"
+  DN: "DEN"
+  EAU: "ARE"
+  EU: "USA"
+  EUC: "ECU"
+  ESC: "ENG"
+  ESQ: "SVK"
+  ESAL: "SLV"
+  EPS: "ESP"
+  FN: "FIN"
+  GAL: "ENG"
+  HA: "AUS"
+  HOL: "NLD"
+  INA: "IND"
+  INDA: "IND"
+  ING: "ENG"
+  MLD: "MDV"
+  LAOS: "LAO"
+  LAT: "LTU"
+  LE: "LIE"
+  OST: "AUT"
+  RD: "DOM"
+  SU: "SUI"
+  TA: "THA"
+  T&T: "TRI"
+  VET: "VIE"
+
+confederacion_continente:
+  AFC: "Asia"
+  CAF: "Africa"
+  CONCACAF: "Americas"
+  CONMEBOL: "Americas"
+  OFC: "Oceania"
+  UEFA: "Europe"

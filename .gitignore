@@ -6,6 +6,7 @@ quilt_packages/
 
 *.yml
 !environment.yml
+!axem_wrangling.yml
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
